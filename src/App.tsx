@@ -1,25 +1,56 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './header';
+import Expresso from './expresso/expresso';
+import Mocha from './mocha/mocha';
+import Frappuccino from './frappuccino/frappuccino';
+import RenderCoffe from './renderCoffe';
 
 function App() {
+  const [menu, setMenu] = React.useState('Expresso');
+
+  function testeMenu(item: any) {
+    console.log('CHEGOU ITEMMM APP.tsx', item);
+    setMenu(item);
+  }
+
+  switch (menu) {
+    case 'Expresso':
+      console.log('Caiu switch expresso');
+      return (
+        <>
+        <Header setMenu={testeMenu} />
+        <RenderCoffe type={'expresso'} />
+        </>
+      )
+    case "Frappuccino's":
+      return (
+        <>
+        <Header setMenu={testeMenu} />
+        <RenderCoffe type={'frappuccino'} />
+        </>
+      )
+    case 'Mocha':
+      return (
+        <>
+          <Header setMenu={testeMenu} />
+          <RenderCoffe type={'mocha'} />
+        </>
+      )
+    default:
+      return (
+        <>
+        <Header setMenu={testeMenu} />
+        <RenderCoffe type={'expresso'} />
+        </>
+      )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header setMenu={testeMenu} />
+    </>
   );
 }
 

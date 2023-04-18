@@ -3,13 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Header from './header';
+import background from './img/background.jpg';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <div style={{ 
+      backgroundImage: `url(${background})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      position: 'absolute',
+      height: '100vh',
+      width: '100vw',
+      backgroundPosition: 'center' }}>
     <App />
+    </div>
   </React.StrictMode>
 );
 
